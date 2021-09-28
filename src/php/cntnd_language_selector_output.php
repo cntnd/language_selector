@@ -13,6 +13,10 @@ $editmode = cRegistry::isBackendEditMode();
 // input/vars
 $activate = (bool) "CMS_VALUE[1]";
 $showDisabled = (bool) "CMS_VALUE[2]";
+$template = (string) "CMS_VALUE[3]";
+if (empty($template) || !$template){
+    $template="default.html";
+}
 
 // module
 if ($editmode){
@@ -34,7 +38,7 @@ if ($activate){
     $tpl = cSmartyFrontend::getInstance();
     $tpl->assign('languages', $languages);
     $tpl->assign('showDisabled', $showDisabled);
-    $tpl->display('default.html');
+    $tpl->display($template);
 }
 
 if ($editmode){
