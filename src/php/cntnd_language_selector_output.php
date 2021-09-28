@@ -3,6 +3,7 @@
 
 // includes
 cInclude('module', 'includes/class.cntnd_language_selector.php');
+cInclude('module', 'includes/class.cntnd_util.php');
 
 // assert framework initialization
 defined('CON_FRAMEWORK') || die('Illegal call: Missing framework initialization - request aborted.');
@@ -14,7 +15,7 @@ $editmode = cRegistry::isBackendEditMode();
 $activate = (bool) "CMS_VALUE[1]";
 $showDisabled = (bool) "CMS_VALUE[2]";
 $template = (string) "CMS_VALUE[3]";
-if (empty($template) || !$template){
+if (!CntndUtil::isTemplate('cntnd_language_selector', $client, $template)){
     $template="default.html";
 }
 

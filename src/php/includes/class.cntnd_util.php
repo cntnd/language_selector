@@ -43,6 +43,18 @@ class CntndUtil {
 
     return $templates;
   }
+
+  public static function isTemplate($module, $client, $template){
+    $cfgClient = cRegistry::getClientConfig();
+    $template_file   = $cfgClient[$client]["module"]["path"].$module.'/template/'.$template;
+
+    if (!empty($template) && CntndUtil::endsWith($template, ".html")){
+      if (file_exists($template_file)){
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 ?>

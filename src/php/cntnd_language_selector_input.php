@@ -13,7 +13,7 @@ if (empty($showDisabled) || !is_bool($showDisabled)){
     $showDisabled=true;
 }
 $template = "CMS_VALUE[3]";
-if (empty($template) || !$template){
+if (!CntndUtil::isTemplate('cntnd_language_selector', $client, $template)){
     $template="default.html";
 }
 
