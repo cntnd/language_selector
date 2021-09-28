@@ -1,1 +1,6 @@
-MODULE=Modul name
+MODULE=Sprachwahl
+ACTIVATE_LABEL=Modul Sprachwahl
+ACTIVATE=Aktivieren
+DEACTIVATE=Deaktivieren
+MODULE_DEACTIVATED=Modul ist deaktiviert
+SHOW_DISABLED=Sprachen deaktiviert zeigen, wenn keine Übersetzung vorhanden ist (default: true)

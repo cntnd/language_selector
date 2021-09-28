@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
-<name>cntnd_skeleton</name>
+<name>cntnd_language_selector</name>
 <description>
-cntnd_skeleton
-Core HTML
+cntnd_language_selector
+Sprachwahl Module
 
 Autor Thomas D Ascoli, thomas@dasco.li
 
 Version 1.0.0
 </description>
 <type/>
-<alias>cntnd_skeleton</alias>
+<alias>cntnd_language_selector</alias>
 </module>
