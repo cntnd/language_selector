@@ -4,3 +4,5 @@ ACTIVATE=Aktivieren
 DEACTIVATE=Deaktivieren
 MODULE_DEACTIVATED=Modul ist deaktiviert
 SHOW_DISABLED=Sprachen deaktiviert zeigen, wenn keine Übersetzung vorhanden ist (default: true)
+TEMPLATE=Template wählen:
+SELECT_CHOOSE=-bitte wählen-

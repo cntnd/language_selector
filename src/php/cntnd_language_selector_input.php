@@ -1,21 +1,30 @@
 ?><?php
 // cntnd_language_selector_input
 
+// includes
+cInclude('module', 'includes/style.cntnd_language_selector_output-or-input.php');
+cInclude('module', 'includes/class.cntnd_language_selector.php');
+cInclude('module', 'includes/class.cntnd_util.php');
+
 // input/vars
-$uuid = rand();
 $activate = (bool) "CMS_VALUE[1]";
 $showDisabled = "CMS_VALUE[2]";
 if (empty($showDisabled) || !is_bool($showDisabled)){
     $showDisabled=true;
 }
+$template = "CMS_VALUE[3]";
+if (empty($template) || !$template){
+    $template="default.html";
+}
 
-// includes
-cInclude('module', 'includes/style.cntnd_language_selector_output-or-input.php');
-cInclude('module', 'includes/class.cntnd_language_selector.php');
+// other vars
+$uuid = rand();
+$templates = CntndUtil::templates('cntnd_language_selector', $client);
+
 
 ?>
 <div class="form-vertical">
-  <strong><?= mi18n("ACTIVATE_LABEL") ?></strong>
+  <p><strong><?= mi18n("ACTIVATE_LABEL") ?></strong></p>
   <div class="form-check form-check-inline">
     <input id="activate_<?= $uuid ?>" class="form-check-input" type="radio" name="CMS_VAR[1]" value="true" <?php if($activate){ echo 'checked'; } ?> />
     <label for="activate_<?= $uuid ?>"><?= mi18n("ACTIVATE") ?></label>
@@ -31,6 +40,20 @@ cInclude('module', 'includes/class.cntnd_language_selector.php');
       <label for=show_lang_disabled"_<?= $uuid ?>"><?= mi18n("SHOW_DISABLED") ?></label>
   </div>
 
-  <!-- languages -->
+    <div class="form-group">
+        <label for="template_<?= $uuid ?>"><?= mi18n("TEMPLATE") ?></label>
+        <select name="CMS_VAR[3]" id="template_<?= $uuid ?>" size="1">
+            <option value="false"><?= mi18n("SELECT_CHOOSE") ?></option>
+            <?php
+            foreach ($templates as $template_file) {
+                $selected="";
+                if ($template==$template_file){
+                    $selected = 'selected="selected"';
+                }
+                echo '<option value="'.$template_file.'" '.$selected.'>'.$template_file.'</option>';
+            }
+            ?>
+        </select>
+    </div>
 </div>
 <?php
