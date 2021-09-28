@@ -11,6 +11,7 @@ if (empty($showDisabled) || !is_bool($showDisabled)){
 
 // includes
 cInclude('module', 'includes/style.cntnd_language_selector_output-or-input.php');
+cInclude('module', 'includes/class.cntnd_language_selector.php');
 
 ?>
 <div class="form-vertical">
@@ -29,5 +30,7 @@ cInclude('module', 'includes/style.cntnd_language_selector_output-or-input.php')
       <input id="show_lang_disabled_<?= $uuid ?>" class="form-check-input" type="checkbox" name="CMS_VAR[2]" value="true" <?php if($showDisabled){ echo 'checked'; } ?> />
       <label for=show_lang_disabled"_<?= $uuid ?>"><?= mi18n("SHOW_DISABLED") ?></label>
   </div>
+
+  <!-- languages -->
 </div>
 <?php

@@ -30,8 +30,6 @@ if ($activate){
     $cntndOutput = new CntndLanguageSelector($idart, $lang, $client, $showDisabled);
     $languages=$cntndOutput->languages();
 
-    var_dump($languages);
-
     // output
     $tpl = cSmartyFrontend::getInstance();
     $tpl->assign('languages', $languages);

@@ -1,11 +1,12 @@
 <!-- cntnd_language_selector/template/default.html -->
-{if $truncate}
-<div class="truncate" id="truncate-{$uuid}">
-{/if}
-{$text}
-{if $truncate}
+<div class="cntnd_language_selector">
+{foreach name=lang from=$languages item=lang key=idlang}
+    <!-- idlang: {$idlang} -->
+    {if !$lang.url && $showDisabled}
+        <span class="cntnd_language_selector--language cntnd_language_selector--language-deactivate">{$lang.name}</span>
+    {else}
+        <a href="{$lang.url}" class="cntnd_language_selector--language">{$lang.name}</a>
+    {/if}
+{/foreach}
 </div>
-<a target="{$uuid}" class="read-more">Mehr</a>
-<a target="{$uuid}" class="read-less" style="display: none;">Schliessen</a>
-{/if}
 <!-- cntnd_language_selector/template/default.html -->
