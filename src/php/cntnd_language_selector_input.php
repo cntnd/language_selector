@@ -2,9 +2,10 @@
 // cntnd_language_selector_input
 
 // includes
+use Cntnd\LanguageSelector\CntndLanguageSelector;
+
 cInclude('module', 'includes/style.cntnd_language_selector_output-or-input.php');
 cInclude('module', 'includes/class.cntnd_language_selector.php');
-cInclude('module', 'includes/class.cntnd_util.php');
 
 // input/vars
 $activate = (bool) "CMS_VALUE[1]";
@@ -13,13 +14,13 @@ if (empty($showDisabled) || !is_bool($showDisabled)){
     $showDisabled=true;
 }
 $template = "CMS_VALUE[3]";
-if (!CntndUtil::isTemplate('cntnd_language_selector', $client, $template)){
+if (!CntndLanguageSelector::isTemplate('cntnd_language_selector', $client, $template)){
     $template="default.html";
 }
 
 // other vars
 $uuid = rand();
-$templates = CntndUtil::templates('cntnd_language_selector', $client);
+$templates = CntndLanguageSelector::templates('cntnd_language_selector', $client);
 
 
 ?>

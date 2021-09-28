@@ -1,5 +1,7 @@
 <?php
 
+namespace Cntnd\LanguageSelector;
+
 /**
  * cntnd Util Class
  */
@@ -29,12 +31,12 @@ class CntndUtil {
   }
 
   public static function templates($module, $client){
-    $cfgClient = cRegistry::getClientConfig();
+    $cfgClient = \cRegistry::getClientConfig();
     $templates = array();
     $template_dir   = $cfgClient[$client]["module"]["path"].$module.'/template/';
     $handle         = opendir($template_dir);
     while ($entryName = readdir($handle)){
-      if (is_file($template_dir.$entryName) && !CntndUtil::startsWith($entryName, "_")){
+      if (is_file($template_dir.$entryName) && !self::startsWith($entryName, "_")){
         $templates[]=$entryName;
       }
     }
@@ -45,10 +47,10 @@ class CntndUtil {
   }
 
   public static function isTemplate($module, $client, $template){
-    $cfgClient = cRegistry::getClientConfig();
+    $cfgClient = \cRegistry::getClientConfig();
     $template_file   = $cfgClient[$client]["module"]["path"].$module.'/template/'.$template;
 
-    if (!empty($template) && CntndUtil::endsWith($template, ".html")){
+    if (!empty($template) && self::endsWith($template, ".html")){
       if (file_exists($template_file)){
         return true;
       }

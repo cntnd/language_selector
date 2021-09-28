@@ -1,9 +1,13 @@
 <?php
 
+namespace Cntnd\LanguageSelector;
+
+require_once("class.cntnd_util.php");
+
 /**
  * cntnd_language_selector Class
  */
-class CntndLanguageSelector {
+class CntndLanguageSelector extends CntndUtil {
 
     private $idart;
     private $lang;
@@ -18,11 +22,11 @@ class CntndLanguageSelector {
         $this->client = $client;
         $this->showDisabled = $showDisabled;
 
-        $this->db = new cDb;
+        $this->db = new \cDb;
     }
 
     public function languages() {
-        $cfg = cRegistry::getConfig();
+        $cfg = \cRegistry::getConfig();
         $languages = array();
         $articles = $this->articles($cfg);
 
@@ -30,7 +34,7 @@ class CntndLanguageSelector {
         $values = array(
             'clients_lang' => $cfg['tab']['clients_lang'],
             'lang' => $cfg['tab']['lang'],
-            'idclient' => cSecurity::toInteger($this->client)
+            'idclient' => \cSecurity::toInteger($this->client)
         );
         $this->db->query($sql, $values);
         while ($this->db->nextRecord()) {
@@ -38,7 +42,7 @@ class CntndLanguageSelector {
             $url = false;
             if (!empty($articles[$idlang])) {
                 $prob = array('idart' => $this->idart, 'lang' => $this->lang, 'changelang' => $idlang);
-                $url = cUri::getInstance()->build($prob);
+                $url = \cUri::getInstance()->build($prob);
             }
 
             $languages[$idlang]=array(
@@ -57,8 +61,8 @@ class CntndLanguageSelector {
         $values = array(
             'art_lang' => $cfg['tab']['art_lang'],
             'clients_lang' => $cfg['tab']['clients_lang'],
-            'idclient' => cSecurity::toInteger($this->client),
-            'idart' => cSecurity::toInteger($this->idart)
+            'idclient' => \cSecurity::toInteger($this->client),
+            'idart' => \cSecurity::toInteger($this->idart)
         );
         $this->db->query($sql, $values);
         while ($this->db->nextRecord()) {
