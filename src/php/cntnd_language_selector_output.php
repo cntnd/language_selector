@@ -2,8 +2,6 @@
 // cntnd_language_selector_output
 
 // includes
-use Cntnd\LanguageSelector\CntndLanguageSelector;
-
 cInclude('module', 'includes/class.cntnd_language_selector.php');
 
 // assert framework initialization
@@ -16,7 +14,7 @@ $editmode = cRegistry::isBackendEditMode();
 $activate = (bool) "CMS_VALUE[1]";
 $showDisabled = (bool) "CMS_VALUE[2]";
 $template = (string) "CMS_VALUE[3]";
-if (!CntndLanguageSelector::isTemplate('cntnd_language_selector', $client, $template)){
+if (!Cntnd\LanguageSelector\CntndLanguageSelector::isTemplate('cntnd_language_selector', $client, $template)){
     $template="default.html";
 }
 
@@ -33,7 +31,7 @@ if ($editmode){
 
 if ($activate){
     // other/vars
-    $cntndOutput = new CntndLanguageSelector($idart, $lang, $client, $showDisabled);
+    $cntndOutput = new Cntnd\LanguageSelector\CntndLanguageSelector($idart, $lang, $client, $showDisabled);
     $languages=$cntndOutput->languages();
 
     // output
