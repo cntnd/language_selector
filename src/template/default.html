@@ -2,10 +2,15 @@
 <div class="cntnd_language_selector">
 {foreach name=lang from=$languages item=lang key=idlang}
     <!-- idlang: {$idlang} -->
+    {assign var="current_class" value=''}
+    {if $current eq $idlang}
+        {assign var="current_class" value='cntnd_language_selector--current'}
+    {/if}
+
     {if !$lang.url && $showDisabled}
-        <span class="cntnd_language_selector--language cntnd_language_selector--language-deactivate">{$lang.name}</span>
+        <span class="cntnd_language_selector--language {$current_class} cntnd_language_selector--language-deactivate">{$lang.name}</span>
     {else}
-        <a href="{$lang.url}" class="cntnd_language_selector--language">{$lang.name}</a>
+        <a href="{$lang.url}" class="cntnd_language_selector--language {$current_class}">{$lang.name}</a>
     {/if}
 {/foreach}
 </div>

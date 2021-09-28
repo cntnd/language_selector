@@ -38,6 +38,7 @@ if ($activate){
     $tpl = cSmartyFrontend::getInstance();
     $tpl->assign('languages', $languages);
     $tpl->assign('showDisabled', $showDisabled);
+    $tpl->assign('current', $lang);
     $tpl->display($template);
 }
 
